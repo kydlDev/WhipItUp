@@ -5,6 +5,14 @@
 - Changed: the menus of this mod take their text sizes, text colours and font from KydlCore. Needs KydlCore 1.1.1 or newer.
 - Changed: all the **Enable** switches are now together in `[General]` and have new names: `Enable mod` (was `EnableAll`) and `Enable Paddle`, `Enable Flogger`, `Enable Whip`, `Enable Viewer` (each was `Enable` in its own section). The values you had set are taken over; the old entries are removed from your config file.
 
+### Testing
+- Unit tests: 175 passed. Integration tests: 37 passed.
+- Property-based tests (FsCheck, included in the unit tests above): 5 property checks with generated inputs.
+- Coverage of the testable code: 100%. Mutation testing (Stryker): 100% of the mutants are caught by the tests.
+- Performance benchmarks (BenchmarkDotNet): 5.
+- Static analysis (SonarQube): no Medium or High issues.
+- In game with DrakesTestLab: the full suite of 10 tests per run, run 3 times in a row on the release build, all green (the release requirement).
+
 ## 2.0.0
 - Tested in game with the full TestLab suite (10 tests): 3 green runs in a row on 2026-11-05, plus the ecosystem run with all 12 KydlDev mods loaded together.
 - Ported to the KydlDev layout (KydlCore feature switches, new source layout, TestLab suites). No gameplay change. Checked in game on 2026-11-04 (clean start and quit with all mods loaded, no errors from this mod).
