@@ -39,7 +39,8 @@
       "seconds": 2
     },
     {
-      "do": "hook",
+      "do": "check",
+      "check": "hook",
       "name": "whipitup.skillLevel",
       "args": {
         "prefab": "Whip_V1"

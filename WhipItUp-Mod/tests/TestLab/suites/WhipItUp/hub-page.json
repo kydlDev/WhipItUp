@@ -7,6 +7,7 @@
     { "do": "hook", "name": "kc.hubOpen", "args": { "mod": "com.kydldev.WhipItUp" }, "expect": true },
     { "do": "wait", "until": { "check": "hook", "name": "kc.hubIsOpen", "expect": true }, "timeout": 5 },
     { "do": "hook", "name": "kc.hubMods", "contains": "com.kydldev.WhipItUp" },
+    { "do": "hook", "name": "kc.hubTabCount", "args": { "mod": "com.kydldev.WhipItUp" }, "expect": 4, "label": "4 tabs: the config groups General + DebugLog, and the Viewer and Details tabs (user, 2026-11-16: every config category is its own tab)" },
     { "do": "hook", "name": "kc.hubTabs", "args": { "mod": "com.kydldev.WhipItUp" }, "contains": "viewer", "label": "viewer tab" },
     { "do": "hook", "name": "kc.hubTabs", "args": { "mod": "com.kydldev.WhipItUp" }, "contains": "details", "label": "details tab" },
     { "do": "hook", "name": "kc.hubTabs", "args": { "mod": "com.kydldev.WhipItUp" }, "contains": "settings", "label": "settings tab" },

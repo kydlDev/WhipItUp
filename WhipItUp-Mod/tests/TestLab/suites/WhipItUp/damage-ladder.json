@@ -5,7 +5,8 @@
   "steps": [
     { "do": "hook", "name": "whipitup.arena", "contains": "arena at", "label": "start on the arena spot" },
     {
-      "do": "hook",
+      "do": "check",
+      "check": "hook",
       "name": "whipitup.blunt",
       "args": {
         "prefab": "Paddle_V1"
@@ -14,7 +15,8 @@
       "max": 30.5
     },
     {
-      "do": "hook",
+      "do": "check",
+      "check": "hook",
       "name": "whipitup.blunt",
       "args": {
         "prefab": "Paddle_V7"
@@ -23,7 +25,8 @@
       "max": 190
     },
     {
-      "do": "hook",
+      "do": "check",
+      "check": "hook",
       "name": "whipitup.slash",
       "args": {
         "prefab": "Flogger_V1"
@@ -32,7 +35,8 @@
       "max": 20.5
     },
     {
-      "do": "hook",
+      "do": "check",
+      "check": "hook",
       "name": "whipitup.slash",
       "args": {
         "prefab": "Flogger_V7"
@@ -41,7 +45,8 @@
       "max": 152
     },
     {
-      "do": "hook",
+      "do": "check",
+      "check": "hook",
       "name": "whipitup.slash",
       "args": {
         "prefab": "Whip_V1"
@@ -50,7 +55,8 @@
       "max": 20.5
     },
     {
-      "do": "hook",
+      "do": "check",
+      "check": "hook",
       "name": "whipitup.slash",
       "args": {
         "prefab": "Whip_V7"
