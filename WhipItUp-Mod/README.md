@@ -44,11 +44,11 @@ The F6 menu shows the exact numbers of every weapon at every quality level.
 
 | Section | Setting | Default | What it does |
 |---------|---------|---------|--------------|
-| General | EnableAll | true | Switches the whole mod on / off while playing |
-| Paddle | Enable | true | Paddle family (restart the game after changing) |
-| Flogger | Enable | true | Flogger family and the Whips skill (restart the game after changing) |
-| Whip | Enable | true | Whip family and the Whips skill (restart the game after changing) |
-| Viewer | Enable | true | Weapon viewer and details tabs in the KY hub |
+| General | Enable mod | true | Switches the whole mod on / off while playing |
+| General | Enable Paddle | true | Paddle family (restart the game after changing) |
+| General | Enable Flogger | true | Flogger family and the Whips skill (restart the game after changing) |
+| General | Enable Whip | true | Whip family and the Whips skill (restart the game after changing) |
+| General | Enable Viewer | true | Weapon viewer and details tabs in the KY hub |
 | DebugLog | Enable | false | Detailed lines in the BepInEx log for bug reports |
 
 Edits to the file are picked up while the game runs.

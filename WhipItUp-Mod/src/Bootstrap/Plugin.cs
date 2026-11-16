@@ -16,7 +16,7 @@ namespace WhipItUp;
 /// </summary>
 [BepInPlugin(ModGuid, ModName, ModVersion)]
 [BepInDependency(Jotunn.Main.ModGuid)]
-[BepInDependency(KydlCore.Bootstrap.Plugin.ModGuid, "1.0.0")]     // the UI (hub, windows, input lock): manifest KydlDev-KydlCore-1.0.0, same version
+[BepInDependency(KydlCore.Bootstrap.Plugin.ModGuid, "1.1.1")]     // the UI (hub, windows, input lock): manifest KydlDev-KydlCore-1.1.1, same version
 // Weapons, recipes and skill levels exist in the shared world: everybody needs the same version (MIGRATION_DECISIONS "Network compatibility").
 [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.Patch)]
 public class Plugin : BaseUnityPlugin
@@ -24,7 +24,7 @@ public class Plugin : BaseUnityPlugin
     // ModGuid never changes after the first release. ModVersion = manifest.json version_number = newest CHANGELOG heading (tests check it).
     public const string ModGuid = "com.kydldev.WhipItUp";
     public const string ModName = "WhipItUp";
-    public const string ModVersion = "2.0.0";
+    public const string ModVersion = "2.0.1";
     public const string BundleName = "whipitup";
 
     internal static Plugin Instance;
@@ -48,7 +48,7 @@ public class Plugin : BaseUnityPlugin
         // Harmony patches live in src/Integrations/Harmony; each one asks ModSettings whether the mod is on
         PatchInstaller.Apply(ModGuid, Assembly.GetExecutingAssembly());
         // the features (Whips skill, paddle, flogger, whip, viewer) and the mod's tabs in the KY hub of KydlCore (it owns the menu key, window and input lock).
-        // A weapon family that is off ([Paddle] / [Flogger] / [Whip] Enable, or EnableAll) is not added to the game (needs a restart to change).
+        // A weapon family that is off ([Paddle] / [Flogger] / [Whip] Enable, or EnableMod) is not added to the game (needs a restart to change).
         _installer = new ModInstaller(Config);
         bool installed = _installer.Install();
         Config.SettingChanged += OnSettingChanged;

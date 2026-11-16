@@ -2,15 +2,15 @@
   "name": "WhipItUp",
   "description": "WhipItUp: 21 weapons, Whips skill, damage ladder, recipes, flat metal cost, equip, craft, KY hub tabs, live feature switching (KydlCore D-084)",
   "requireMods": [
-    { "guid": "com.kydldev.WhipItUp", "minVersion": "2.0.0" },
-    { "guid": "com.kydldev.KydlCore", "minVersion": "1.0.0" }
+    { "guid": "com.kydldev.WhipItUp", "minVersion": "2.0.1" },
+    { "guid": "com.kydldev.KydlCore", "minVersion": "1.1.1" }
   ],
   "configOverrides": [
-    { "guid": "com.kydldev.WhipItUp", "section": "General", "key": "EnableAll", "value": "true" },
-    { "guid": "com.kydldev.WhipItUp", "section": "Paddle", "key": "Enable", "value": "true" },
-    { "guid": "com.kydldev.WhipItUp", "section": "Flogger", "key": "Enable", "value": "true" },
-    { "guid": "com.kydldev.WhipItUp", "section": "Whip", "key": "Enable", "value": "true" },
-    { "guid": "com.kydldev.WhipItUp", "section": "Viewer", "key": "Enable", "value": "true" },
+    { "guid": "com.kydldev.WhipItUp", "section": "General", "key": "Enable mod", "value": "true" },
+    { "guid": "com.kydldev.WhipItUp", "section": "General", "key": "Enable Paddle", "value": "true" },
+    { "guid": "com.kydldev.WhipItUp", "section": "General", "key": "Enable Flogger", "value": "true" },
+    { "guid": "com.kydldev.WhipItUp", "section": "General", "key": "Enable Whip", "value": "true" },
+    { "guid": "com.kydldev.WhipItUp", "section": "General", "key": "Enable Viewer", "value": "true" },
     { "guid": "com.kydldev.WhipItUp", "section": "DebugLog", "key": "Enable", "value": "true" }
   ],
   "resetBetweenTests": true,

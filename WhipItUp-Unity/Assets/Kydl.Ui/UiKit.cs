@@ -200,7 +200,90 @@ public static class UiKit
         e.style.transitionDuration = new List<TimeValue> { new TimeValue(0.12f, TimeUnit.Second) };
     }
 
-    /// <summary>A text label (not clickable) with a size and colour; title = the title font.</summary>
+    // --- text by ROLE ------------------------------------------------------------------------------------------------------
+    // User 2026-11-16: "a mod should absolutely NEVER have those settings set, it should always expect them to be set by Core." A mod says
+    // WHAT a text is (its role); the size, the colour and the font are KydlCore's, decided here at run time. A mod never passes a size, a
+    // colour or a font (every mod has a test for that), so a change of the look here reaches every mod without rebuilding it.
+
+    /// <summary>The colour of a good / a bad value (enough of something / not enough).</summary>
+    public static readonly Color Good = new(0.62f, 0.92f, 0.50f, 1f), Bad = new(1f, 0.50f, 0.45f, 1f);
+
+    /// <summary>The text size of a role, in px at the 1080p reference.</summary>
+    public static int SizeOf(TextRole role)
+    {
+        switch (role)
+        {
+            case TextRole.Section: case TextRole.SectionMuted: return SectionSize;
+            case TextRole.Name: return NameSize;
+            case TextRole.Button: return ButtonSize;
+            case TextRole.Small: case TextRole.SmallNote: return SmallSize;
+            case TextRole.Chip: return ChipSize;
+            default: return FontSize;
+        }
+    }
+
+    /// <summary>The text colour of a role.</summary>
+    public static Color ColorOf(TextRole role)
+    {
+        switch (role)
+        {
+            case TextRole.Name: return NameColor;
+            case TextRole.Value: case TextRole.Section: return ValueColor;
+            case TextRole.Note: case TextRole.SmallNote: case TextRole.SectionMuted: return TextDim;
+            case TextRole.Good: return Good;
+            case TextRole.Bad: return Bad;
+            default: return Text;
+        }
+    }
+
+    const int ChipSize = 24;
+
+    /// <summary>A text label (not clickable) in the size, colour and font of its role.</summary>
+    public static Label TextLabel(string text, TextRole role)
+    {
+        return Label(text, SizeOf(role), ColorOf(role), role == TextRole.Section || role == TextRole.SectionMuted);
+    }
+
+    /// <summary>Gives an element the text size AND colour of a role. Returns the element.</summary>
+    public static T Style<T>(T element, TextRole role) where T : VisualElement
+    {
+        element.style.fontSize = SizeOf(role); element.style.color = ColorOf(role);
+        return element;
+    }
+
+    /// <summary>Gives an element only the text COLOUR of a role (a value that turns good / bad, a line that is marked as changed). Returns the element.</summary>
+    public static T Tint<T>(T element, TextRole role) where T : VisualElement
+    {
+        element.style.color = ColorOf(role);
+        return element;
+    }
+
+    /// <summary>Gives an element only the text SIZE of a role. Returns the element.</summary>
+    public static T Size<T>(T element, TextRole role) where T : VisualElement
+    {
+        element.style.fontSize = SizeOf(role);
+        return element;
+    }
+
+    /// <summary>The text of a tab button of a mod's own tab row: its size, and its colour by state (selected / under the mouse / idle).</summary>
+    public static void TabText(VisualElement tab, bool active, bool hover)
+    {
+        tab.style.fontSize = ButtonSize;
+        tab.style.color = active ? Gold : hover ? Text : TextDim;
+    }
+
+    /// <summary>A chip that offers a text colour to choose (a sign's text colour): its letter is shown in that colour, at the chip size.</summary>
+    public static void ColourChip(VisualElement chip, Color choice)
+    {
+        chip.style.fontSize = ChipSize;
+        chip.style.color = choice;
+        chip.AddToClassList(ChipClass);
+    }
+
+    /// <summary>Marks a colour chip: its text colour is the player's choice, the one text colour the hub does not replace.</summary>
+    public const string ChipClass = "kydl-colour-chip";
+
+    /// <summary>A text label (not clickable) with a size and colour; title = the title font. KydlCore's own pages only: a mod uses <see cref="TextLabel"/>.</summary>
     public static Label Label(string text, float size, Color color, bool title = false)
     {
         var l = new Label(text);

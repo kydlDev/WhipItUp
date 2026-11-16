@@ -1,16 +1,16 @@
 ﻿# SonarQube WhipItUp - OK (Medium/High impact issues: 0; Sonar server gate: ERROR)
 
-Run 2026-11-04 17:36:14, http://localhost:9000/dashboard?id=WhipItUp
+Run 2026-11-16 11:57:43, http://localhost:9000/dashboard?id=WhipItUp
 
 | Measure | Value |
 |---|---|
-| branch_coverage | 18.4 |
+| branch_coverage | 18.3 |
 | bugs | 0 |
 | code_smells | 11 |
-| coverage | 19.5 |
+| coverage | 19.4 |
 | duplicated_lines_density | 0.0 |
-| line_coverage | 20.2 |
-| ncloc | 4536 |
+| line_coverage | 20.1 |
+| ncloc | 4551 |
 | reliability_rating | 1.0 |
 | security_hotspots | 0 |
 | security_rating | 1.0 |

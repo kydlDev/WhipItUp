@@ -50,38 +50,45 @@ public class SettingsTests
     }
 
     [Test]
-    public void PlayerConfig_HasEnableAll()
+    public void PlayerConfig_HasEnableMod()
     {
         var src = File.ReadAllText(Path.Combine(TestPaths.Src, "Configuration", "ModSettings.cs"));
 
-        Assert.That(Regex.IsMatch(src, @"Bind\(\s*""General""\s*,\s*""EnableAll""\s*,\s*true"), Is.True, "[General] EnableAll (on by default) is the global switch of every mod");
+        Assert.That(Regex.IsMatch(src, @"Bind\(\s*""General""\s*,\s*""Enable mod""\s*,"), Is.True, "[General] Enable mod (on by default) is the global switch of every mod");
     }
 
     [Test]
-    public void PlayerConfig_EverySectionHasEnable()
+    public void PlayerConfig_CategorySwitchesAreInGeneral()
     {
-        // PROJECT_RULES 11 (user, 2026-10-30): every functionality has its own [Section] Enable; General holds EnableAll, DebugLog holds its Enable
+        // PROJECT_RULES 11 (user, 2026-11-16): the switch of every category is [General] "Enable <Category>"; the only "Enable" that stays in its own section is [DebugLog] Enable
         var src = File.ReadAllText(Path.Combine(TestPaths.Src, "Configuration", "ModSettings.cs"));
-        var sections = new HashSet<string>();
-        var withEnable = new HashSet<string>();
+
         foreach (Match m in Regex.Matches(src, @"\.Bind\(\s*""(?<s>[^""]+)""\s*,\s*""(?<k>[^""]+)"""))
         {
-            sections.Add(m.Groups["s"].Value);
-            if (m.Groups["k"].Value == "Enable") withEnable.Add(m.Groups["s"].Value);
-        }
-        sections.Remove("General");
+            string section = m.Groups["s"].Value;
+            string key = m.Groups["k"].Value;
+            if (key == "Enable")
+            {
+                Assert.That(section, Is.EqualTo("DebugLog"), "[" + section + "] Enable: the switch of a category lives in [General] as 'Enable <Category>' (PROJECT_RULES 11)");
+            }
 
-        foreach (var s in sections)
-            Assert.That(withEnable.Contains(s), Is.True, "config section [" + s + "] has no 'Enable' entry: every functionality gets its own switch (PROJECT_RULES 11); a setting that is not a functionality belongs in [General]");
+            if (section == "General" && key.StartsWith("Enable ") && key != "Enable mod")
+            {
+                Assert.That(Regex.IsMatch(key, @"^Enable [A-Z]"), Is.True, "[General] " + key + ": the category name after 'Enable ' starts with a capital letter");
+            }
+        }
     }
 
     [Test]
-    public void PlayerConfig_HasTheFourFunctionalitySwitches()
+    public void PlayerConfig_NamesSayAppearanceNotLook()
     {
+        // user, 2026-11-16: config sections and keys are called "Appearance", never "Look"
         var src = File.ReadAllText(Path.Combine(TestPaths.Src, "Configuration", "ModSettings.cs"));
 
-        foreach (var section in new[] { "Paddle", "Flogger", "Whip", "Viewer" })
-            Assert.That(Regex.IsMatch(src, @"Bind\(\s*""" + section + @"""\s*,\s*""Enable""\s*,\s*true"), Is.True, "[" + section + "] Enable (on by default) is the switch of that functionality");
+        foreach (Match m in Regex.Matches(src, @"\.Bind\(\s*""(?<s>[^""]+)""\s*,\s*""(?<k>[^""]+)"""))
+        {
+            Assert.That(Regex.IsMatch(m.Groups["s"].Value + " " + m.Groups["k"].Value, @"\bLook\b", RegexOptions.IgnoreCase), Is.False, "config name '" + m.Groups["s"].Value + " / " + m.Groups["k"].Value + "': use 'Appearance', not 'Look'");
+        }
     }
 
     [Test]

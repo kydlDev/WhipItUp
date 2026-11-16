@@ -18,8 +18,8 @@ internal static class InGameTests
 
     static string Startup_ConfigBound()
     {
-        if (ModSettings.EnableAll == null || ModSettings.DebugLog == null) return "FAIL: ModSettings.Bind did not run (EnableAll / DebugLog null)";
-        string r = ModSettings.On ? "PASS: EnableAll on, paddle " + ModSettings.PaddleOn + ", flogger " + ModSettings.FloggerOn + ", whip " + ModSettings.WhipOn + ", viewer " + ModSettings.ViewerOn + ", debug log " + ModSettings.DebugLog.Value : "SKIP: EnableAll is off in the config";
+        if (ModSettings.EnableMod == null || ModSettings.DebugLog == null) return "FAIL: ModSettings.Bind did not run (EnableMod / DebugLog null)";
+        string r = ModSettings.On ? "PASS: EnableMod on, paddle " + ModSettings.PaddleOn + ", flogger " + ModSettings.FloggerOn + ", whip " + ModSettings.WhipOn + ", viewer " + ModSettings.ViewerOn + ", debug log " + ModSettings.DebugLog.Value : "SKIP: EnableMod is off in the config";
         ModLog.Verbose("InGameTests: Startup_ConfigBound -> " + r);
         return r;
     }
@@ -147,9 +147,9 @@ internal static class InGameTests
     /// (asked through the game's own Piece.Requirement.GetAmount, so FlatUpgradePatch is part of the check).
     static string World_MetalCostFlat()
     {
-        // FlatUpgradePatch does nothing while [General] EnableAll is off (by design), so the game's own 1x / 2x / 4x cost is what the recipes show then:
-        // that is not a bug, and reporting it as FAIL hid real results in every report while the test profile had EnableAll off
-        if (!ModSettings.On) return "SKIP: EnableAll is off in the config - the flat upgrade cost patch is inert while the mod is off";
+        // FlatUpgradePatch does nothing while [General] Enable mod is off (by design), so the game's own 1x / 2x / 4x cost is what the recipes show then:
+        // that is not a bug, and reporting it as FAIL hid real results in every report while the test profile had EnableMod off
+        if (!ModSettings.On) return "SKIP: EnableMod is off in the config - the flat upgrade cost patch is inert while the mod is off";
         if (OnFamilies().Count == 0) return "SKIP: every weapon family is off in the config";
         if (ObjectDB.instance == null) return "SKIP: ObjectDB not ready";
         int found = Weapons.FlatUpgradePatch.Scan(), checkedN = 0;

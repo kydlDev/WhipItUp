@@ -45,9 +45,9 @@ internal static class WeaponViewportView
     static void BuildPlaceholder(Func<string, string> text, WeaponSelection selection, VisualElement frame)
     {
         frame.style.justifyContent = Justify.Center; frame.style.alignItems = Align.Center;
-        var name = UiKit.Label("", UiKit.SectionSize, UiKit.TextDim, true);
+        var name = UiKit.TextLabel("", TextRole.SectionMuted);
         frame.Add(name);
-        frame.Add(UiKit.Label(text("whipitup_viewer_unavailable"), UiKit.FontSize, UiKit.TextDim));
+        frame.Add(UiKit.TextLabel(text("whipitup_viewer_unavailable"), TextRole.Note));
         Action show = () =>
         {
             var w = selection.Current;
@@ -89,12 +89,12 @@ internal static class WeaponViewportView
             _image.style.left = 0; _image.style.top = 0; _image.style.right = 0; _image.style.bottom = 0;
             frame.Add(_image);
 
-            _name = UiKit.Label("", UiKit.SectionSize, UiKit.Gold, true);
+            _name = UiKit.TextLabel("", TextRole.Section);
             _name.style.position = Position.Absolute; _name.style.left = 10; _name.style.top = 6;
             _name.pickingMode = PickingMode.Ignore;
             frame.Add(_name);
 
-            var hint = UiKit.Label(text("whipitup_viewer_hint"), UiKit.SmallSize, UiKit.TextDim);
+            var hint = UiKit.TextLabel(text("whipitup_viewer_hint"), TextRole.SmallNote);
             hint.style.position = Position.Absolute; hint.style.left = 10; hint.style.bottom = 8;
             hint.pickingMode = PickingMode.Ignore;
             frame.Add(hint);

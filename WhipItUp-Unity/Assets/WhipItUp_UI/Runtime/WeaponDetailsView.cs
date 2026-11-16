@@ -58,9 +58,9 @@ internal static class WeaponDetailsView
     static VisualElement ColumnHeader(WeaponInfo w)
     {
         var r = RowBox();
-        r.Add(Cell("", LabelWidth, UiKit.TextDim, UiKit.SmallSize));
-        r.Add(Cell(w.QualityHeader, ValueWidth, UiKit.TextDim, UiKit.SmallSize));
-        r.Add(Cell(w.MaxQualityHeader, ValueWidth, UiKit.TextDim, UiKit.SmallSize));
+        r.Add(Cell("", LabelWidth, TextRole.SmallNote));
+        r.Add(Cell(w.QualityHeader, ValueWidth, TextRole.SmallNote));
+        r.Add(Cell(w.MaxQualityHeader, ValueWidth, TextRole.SmallNote));
         return r;
     }
 
@@ -69,10 +69,10 @@ internal static class WeaponDetailsView
     static VisualElement StatRow(DetailRow row, bool blockHasMax)
     {
         var r = RowBox();
-        r.Add(Cell(row.Label, LabelWidth, UiKit.TextDim, UiKit.FontSize));
-        var value = Cell(row.Value, blockHasMax && row.HasMax ? ValueWidth : -1f, UiKit.Text, UiKit.FontSize);
+        r.Add(Cell(row.Label, LabelWidth, TextRole.Note));
+        var value = Cell(row.Value, blockHasMax && row.HasMax ? ValueWidth : -1f, TextRole.Body);
         r.Add(value);
-        if (blockHasMax && row.HasMax) r.Add(Cell(row.MaxValue, ValueWidth, UiKit.Gold, UiKit.FontSize));
+        if (blockHasMax && row.HasMax) r.Add(Cell(row.MaxValue, ValueWidth, TextRole.Value));
         return r;
     }
 
@@ -85,9 +85,9 @@ internal static class WeaponDetailsView
     }
 
     /// A text cell: fixed width, or (width < 0) the rest of the line.
-    static Label Cell(string content, float width, Color color, float size)
+    static Label Cell(string content, float width, TextRole role)
     {
-        var l = UiKit.Label(content, size, color);
+        var l = UiKit.TextLabel(content, role);
         l.style.whiteSpace = WhiteSpace.Normal;
         if (width >= 0f) { l.style.width = width; l.style.flexShrink = 0; }
         else { l.style.flexGrow = 1; l.style.flexShrink = 1; }

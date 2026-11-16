@@ -2,7 +2,7 @@ namespace WhipItUp;
 
 /// <summary>
 /// Which functionalities of WhipItUp are on (PROJECT_RULES 11, user 2026-10-30). Pure: no game types, unit tested.
-/// A functionality works only when [General] EnableAll AND its own [Section] Enable are on. Off = it is not added to the game / not shown.
+/// A functionality works only when [General] Enable mod AND its own [Section] Enable are on. Off = it is not added to the game / not shown.
 /// Functionalities: Paddle, Flogger, Whip (weapon families) and Viewer (the weapon viewer + details tabs in the KY hub).
 /// </summary>
 internal static class Functions
