@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Benchmarks of the mod's game-free rules (PROJECT_RULES 30, skill microbenchmarking in .claude\skills). The pure files are linked like in the
+       unit-test project, so the benchmarks measure the very code the mod ships. Run from this folder, Release only: dotnet run -c Release, then the
+       BenchmarkDotNet flags filter and job after a double dash (always a filter: the switcher asks interactively otherwise); output into a file.
+       Report: BenchmarkDotNet.Artifacts\results\*-report-github.md; keep the numbers in ..\_quality\benchmarks.md. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>WhipItUp.Benchmarks</AssemblyName>
+    <RootNamespace>WhipItUp.Benchmarks</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- KydlCore.Core (shared pure contracts) -->
+    <Compile Include="$(MSBuildThisFileDirectory)..\..\..\..\KydlCore\KydlCore-Mod\src\Shared\Core\**\*.cs" Link="Kydl\Core\%(RecursiveDir)%(Filename)%(Extension)" />
+    <Compile Include="..\..\src\Features\*\Domain\**\*.cs" Link="Mod\Domain\%(RecursiveDir)%(Filename)%(Extension)" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- the shipped lash data, so Parse / Sample are measured on the real file -->
+    <None Include="..\..\src\Features\Whip\Infrastructure\whip_lash_frames.txt" Link="whip_lash_frames.txt" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" Version="0.15.8" />
+  </ItemGroup>
+</Project>

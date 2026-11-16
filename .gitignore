@@ -122,3 +122,7 @@ CLAUDE.md
 # test-quality output (coverage, Stryker): rebuilt by _agent/tools/test-quality.ps1
 /*-Mod/tests/_quality/
 /*-Mod/release/
+
+# BenchmarkDotNet output (PROJECT_RULES 30): numbers that matter go to tests/_quality/benchmarks.md
+**/BenchmarkDotNet.Artifacts/
+**/Benchmarks/bench*.log
