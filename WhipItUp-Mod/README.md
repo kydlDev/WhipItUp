@@ -58,3 +58,11 @@ Every player (and the server) needs WhipItUp and KydlCore, and the versions must
 
 ## Bug reports
 Turn on `[DebugLog] Enable`, reproduce the problem, and attach `BepInEx/LogOutput.log`.
+
+---
+
+![KydlDev](https://raw.githubusercontent.com/kydlDev/.github/main/branding/KydlDev-banner-960x240.png)
+
+## Get help and stay in touch
+Questions, bug reports, ideas or mod requests? Come say hi in the **KydlDev Discord**: **https://discord.gg/tX2CcTNC4W**
+Everyone is welcome, and it is the quickest way to reach me. Source code and issues: https://github.com/kydlDev
