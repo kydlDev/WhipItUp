@@ -44,7 +44,7 @@ The F6 menu shows the exact numbers of every weapon at every quality level.
 
 | Section | Setting | Default | What it does |
 |---------|---------|---------|--------------|
-| General | Enable mod | true | Switches the whole mod on / off while playing |
+| General | Enable Mod | true | Switches the whole mod on / off while playing |
 | General | Enable Paddle | true | Paddle family (restart the game after changing) |
 | General | Enable Flogger | true | Flogger family and the Whips skill (restart the game after changing) |
 | General | Enable Whip | true | Whip family and the Whips skill (restart the game after changing) |

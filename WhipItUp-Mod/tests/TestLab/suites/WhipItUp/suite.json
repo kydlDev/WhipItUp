@@ -6,7 +6,7 @@
     { "guid": "com.kydldev.KydlCore", "minVersion": "1.1.1" }
   ],
   "configOverrides": [
-    { "guid": "com.kydldev.WhipItUp", "section": "General", "key": "Enable mod", "value": "true" },
+    { "guid": "com.kydldev.WhipItUp", "section": "General", "key": "Enable Mod", "value": "true" },
     { "guid": "com.kydldev.WhipItUp", "section": "General", "key": "Enable Paddle", "value": "true" },
     { "guid": "com.kydldev.WhipItUp", "section": "General", "key": "Enable Flogger", "value": "true" },
     { "guid": "com.kydldev.WhipItUp", "section": "General", "key": "Enable Whip", "value": "true" },

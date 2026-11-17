@@ -21,7 +21,7 @@ internal static class ModSettings
     // [DebugLog]
     public static ConfigEntry<bool> DebugLog;
 
-    /// Is the mod switched on ([General] Enable mod)? Off = inert: no effects, no menus; nothing built is removed.
+    /// Is the mod switched on ([General] Enable Mod)? Off = inert: no effects, no menus; nothing built is removed.
     public static bool On { get { return EnableMod == null || EnableMod.Value; } }
 
     /// A functionality is on only when EnableMod AND its own Enable are on (D-074; the rule itself is Functions.IsOn).
@@ -179,8 +179,8 @@ internal static class ModSettings
     {
         var savedLines = ConfigTools.Capture(c);     // before the first Bind: every Bind saves the file with what BepInEx parsed
 
-        EnableMod = c.Bind("General", "Enable mod", Old(c, "General", "EnableAll"),
-            "Switches the whole mod on / off while playing. Off: no effects and no menus from this mod; things already built stay in the world.");
+        EnableMod = c.Bind("General", "Enable Mod", Old(c, "General", "Enable mod", "General", "EnableAll"),
+            ConfigOrder.First("Switches the whole mod on / off while playing. Off: no effects and no menus from this mod; things already built stay in the world."));
         PaddleEnable = c.Bind("General", "Enable Paddle", Old(c, "Paddle", "Enable"),
             "The Paddle weapons (7 ranks, Clubs skill). Off: they are not added to the game. Needs a game restart.");
         FloggerEnable = c.Bind("General", "Enable Flogger", Old(c, "Flogger", "Enable"),
@@ -195,8 +195,8 @@ internal static class ModSettings
         ConfigTools.ApplyCommaFix(c, savedLines);    // after every Bind: "3,5" typed by hand means 3.5, not 35
         ConfigTools.DropRemoved(c);
 
-        EnableMod.SettingChanged += (s, e) => ModLog.Info("Config: Enable mod = " + EnableMod.Value + (EnableMod.Value ? ", the mod is on" : ", the mod is inert (no effects or menus)"));
-        ModLog.Verbose("Config: bound (Enable mod " + EnableMod.Value + ", paddle " + PaddleOn + ", flogger " + FloggerOn + ", whip " + WhipOn + ", skill " + SkillOn + ", viewer " + ViewerOn + ", debug log " + DebugLog.Value + ")");
+        EnableMod.SettingChanged += (s, e) => ModLog.Info("Config: Enable Mod = " + EnableMod.Value + (EnableMod.Value ? ", the mod is on" : ", the mod is inert (no effects or menus)"));
+        ModLog.Verbose("Config: bound (Enable Mod " + EnableMod.Value + ", paddle " + PaddleOn + ", flogger " + FloggerOn + ", whip " + WhipOn + ", skill " + SkillOn + ", viewer " + ViewerOn + ", debug log " + DebugLog.Value + ")");
         return EnableMod != null && PaddleEnable != null && FloggerEnable != null && WhipEnable != null && ViewerEnable != null && DebugLog != null;
     }
 }

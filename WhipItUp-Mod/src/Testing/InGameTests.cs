@@ -147,7 +147,7 @@ internal static class InGameTests
     /// (asked through the game's own Piece.Requirement.GetAmount, so FlatUpgradePatch is part of the check).
     static string World_MetalCostFlat()
     {
-        // FlatUpgradePatch does nothing while [General] Enable mod is off (by design), so the game's own 1x / 2x / 4x cost is what the recipes show then:
+        // FlatUpgradePatch does nothing while [General] Enable Mod is off (by design), so the game's own 1x / 2x / 4x cost is what the recipes show then:
         // that is not a bug, and reporting it as FAIL hid real results in every report while the test profile had EnableMod off
         if (!ModSettings.On) return "SKIP: EnableMod is off in the config - the flat upgrade cost patch is inert while the mod is off";
         if (OnFamilies().Count == 0) return "SKIP: every weapon family is off in the config";
