@@ -1,6 +1,6 @@
 ﻿# SonarQube WhipItUp - OK (Medium/High impact issues: 0; Sonar server gate: OK)
 
-Run 2026-11-16 14:33:16, http://localhost:9000/dashboard?id=WhipItUp
+Run 2026-11-17 07:30:58, http://localhost:9000/dashboard?id=WhipItUp
 
 | Measure | Value |
 |---|---|
@@ -10,7 +10,7 @@ Run 2026-11-16 14:33:16, http://localhost:9000/dashboard?id=WhipItUp
 | coverage | 100.0 |
 | duplicated_lines_density | 0.0 |
 | line_coverage | 100.0 |
-| ncloc | 4551 |
+| ncloc | 4569 |
 | reliability_rating | 1.0 |
 | security_hotspots | 0 |
 | security_rating | 1.0 |
